@@ -1,0 +1,6 @@
+# Moonshine Telegram Bot
+
+This is a demo Telegram bot just for testing AWS Lanbda.
+
+It will provide some useful commands for developers.
+
