@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
+
+from bot.views import CommandReceiveView, HeartBeatView
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^heartbeat/?$', HeartBeatView.as_view()),
+    url(r'^bot/(?P<bot_token>.+)/$', CommandReceiveView.as_view(), name='command')
 ]

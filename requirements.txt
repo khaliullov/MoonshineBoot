@@ -1,2 +1,4 @@
 Django==1.10.3
+zappa==0.28.3
+telepot==10.1
 

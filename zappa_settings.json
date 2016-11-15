@@ -1,0 +1,7 @@
+{
+    "production": {
+        "django_settings": "MoonshineBot.settings",
+        "keep_warm": false,
+        "s3_bucket": "zappa-812t4gtpe"
+    }
+}
