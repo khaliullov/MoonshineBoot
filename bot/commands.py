@@ -26,4 +26,4 @@ class CommandsProcessor(object):
         command = parts[0].strip('/')
         arg = parts[1] if len(parts) > 1 else ''
         handler = getattr(self, command.lower(), self.bad_request)
-        TelegramBot.sendMessage(chat_id, handler(arg), parse_mode='Markdown')
+        self.TelegramBot.sendMessage(chat_id, handler(arg), parse_mode='Markdown')
