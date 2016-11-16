@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import hashlib
 import logging
 
 import telepot
@@ -19,7 +20,9 @@ class CommandsProcessor(object):
         return 'молодец'
 
     def md5(self, arg):
-        return 'Not yet implemented'
+        m = hashlib.md5()
+        m.update(arg)
+        return m.hexdigest()
 
     def bad_request(self, arg):
         return 'Bad request'
