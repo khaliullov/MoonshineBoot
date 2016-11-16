@@ -1,6 +1,0 @@
-Moonshine Telegram Bot Changelog
-================================
-
-0.0.1_1 (14-11-2016)
-   - NEW: Added Telegram Bot skeleton
-
