@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 
 import telepot
@@ -13,6 +14,9 @@ class CommandsProcessor(object):
 
     def help(self, arg):
         return self.start(arg)
+
+    def me(self, arg):
+        return 'молодец'
 
     def md5(self, arg):
         return 'Not yet implemented'

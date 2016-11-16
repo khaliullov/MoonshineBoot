@@ -14,6 +14,10 @@ venv:
 clean:
 	rm -rf $(mkfile_dir)venv
 
+status: venv
+	. $(mkfile_dir)venv/bin/activate; \
+	$(mkfile_dir)venv/bin/zappa status
+
 deploy: venv
 	. $(mkfile_dir)venv/bin/activate; \
 	$(mkfile_dir)venv/bin/zappa deploy production
