@@ -30,7 +30,7 @@ class CommandsProcessor(object):
     def dispatch(self, text, chat_id):
         parts = text.split(None, 1)
 
-        command = parts[0].strip('/')
+        command = parts[0].strip('/').split("@")[0]
         arg = parts[1] if len(parts) > 1 else ''
         handler = getattr(self, command.lower(), self.bad_request)
         self.TelegramBot.sendMessage(chat_id, handler(arg), parse_mode='Markdown')

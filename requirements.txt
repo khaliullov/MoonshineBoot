@@ -1,4 +1,4 @@
-Django==1.9.11
-zappa==0.28.3
+Django==1.10.4
+zappa==0.32.1
 telepot==10.1
 
