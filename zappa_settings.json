@@ -2,6 +2,7 @@
     "production": {
         "django_settings": "MoonshineBot.settings",
         "keep_warm": false,
+        "aws_region": "eu-central-1",
         "s3_bucket": "zappa-812t4gtpe"
     }
 }

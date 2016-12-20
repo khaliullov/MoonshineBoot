@@ -32,7 +32,6 @@ class CommandReceiveView(View):
 
     def post(self, request, bot_token):
         raw = request.body.decode('utf-8')
-        self.logger.info(raw)
 
         if self.cp is None:
             self.cp = CommandsProcessor(bot_token)
@@ -44,9 +43,7 @@ class CommandReceiveView(View):
                                  "description": "Bad request",
                                  "error_code": 400}, status=400)
         else:
-            chat_id = payload['message']['chat']['id']
-            cmd = payload['message'].get('text')  # command
-            self.cp.dispatch(cmd, chat_id)
+            self.cp.dispatch(**payload)
 
         return JsonResponse({"ok": True}, status=200)
 

@@ -2,4 +2,4 @@
 bot app
 """
 
-default_app_config = 'bot.apps.Apiv1Config'  # NOQA # pylint: disable=invalid-name
+default_app_config = 'bot.apps.BotConfig'  # NOQA # pylint: disable=invalid-name
