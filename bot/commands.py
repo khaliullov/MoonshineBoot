@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import hashlib
 import logging
+import urllib
 
 import telepot
+import xmltodict
 
 
 class CommandsProcessor(object):
@@ -14,7 +16,7 @@ class CommandsProcessor(object):
         return 'Not yet implemented'
 
     def help(self, arg, **payload):
-        return self.start(arg)
+        return self.start(arg, **payload)
 
     def me(self, arg, **payload):
         return 'молодец'
@@ -23,6 +25,13 @@ class CommandsProcessor(object):
         m = hashlib.md5()
         m.update(arg)
         return m.hexdigest()
+
+    def weather(self, arg, **payload):
+        data = xmltodict.parse(urllib.urlopen('http://rp5.ru/rss/507958/ru'))
+        return '*' + data['feed']['title']['#text'] + "*\n__" + \
+            data['feed']['entry']['title']['#text'] + "__\n" + \
+            data['feed']['entry']['summary']['#text'] + "\n[Подробнее ...](" + \
+            data['feed']['entry']['link']['@href'] + ")"
 
     def say(self, arg, **payload):
         parts = arg.split(None, 1)
