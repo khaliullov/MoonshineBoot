@@ -2,6 +2,8 @@
 import hashlib
 import logging
 import urllib
+import json
+import re
 
 import telepot
 import xmltodict
@@ -25,6 +27,22 @@ class CommandsProcessor(object):
         m = hashlib.md5()
         m.update(arg)
         return m.hexdigest()
+
+    def anecdote(self, arg, **payload):
+        content = urllib.urlopen('http://www.anekdot.ru/rss/randomu.html').read()
+        m = re.search(r'anekdot_texts = (.*);\n', content)
+        if m:
+            try:
+                data = json.loads(m.group(1).replace('<br>', '\n').replace('"', '\\"').replace('\'', '"'), strict=False)
+            except ValueError:
+                return 'Failed to parse JavaScript'
+            result = "*Анекдоты из России*"
+            separator = "\n"
+            for joke in data:
+                result += separator + joke + "\n"
+                separator = "\n\\* \\* \\*\n"
+            return result
+        return 'Protocol has been changed'
 
     def weather(self, arg, **payload):
         data = xmltodict.parse(urllib.urlopen('http://rp5.ru/rss/507958/ru'))
@@ -50,6 +68,8 @@ class CommandsProcessor(object):
     def dispatch(self, **payload):
         self.logger.info(payload)
 
+        if 'message' not in payload:
+            return None
         chat_id = payload['message']['chat']['id']
         text = payload['message'].get('text')  # command
 
