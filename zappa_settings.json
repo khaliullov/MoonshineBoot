@@ -3,6 +3,7 @@
         "django_settings": "MoonshineBot.settings",
         "keep_warm": false,
         "aws_region": "eu-central-1",
+        "remote_env": "s3://zappa-812t4gtpe/remote_env.json",
         "s3_bucket": "zappa-812t4gtpe"
     }
 }

@@ -149,3 +149,5 @@ LOGGING = {
         },
     }
 }
+
+YANDEX_TRANSLATE_KEY = os.environ.get('YANDEX_TRANSLATE_KEY', '')
